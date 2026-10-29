@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Reserva calendarizada - DEFIDER</title>
+  <link rel="stylesheet" href="estilos.css">
+</head>
+<body>
+  <div class="container">
+    <div class="page-header">
+      <div>
+        <h1>Inscripción calendarizada especial</h1>
+        <p class="subtitle">Registra un bloque fijo para una actividad académica o extracurricular.</p>
+      </div>
+      <div class="header-actions">
+        <span id="nombreUsuarioNav" class="user-name">Administrador DEFIDER</span>
+        <span id="rolUsuarioNav" class="user-role">Administrador</span>
+        <a href="/revisar-reservas" class="btn-back btn-secondary">Volver a reservas</a>
+      </div>
+    </div>
+
+    <div id="mensajeError" class="alerta-error d-none"></div>
+
+    <form id="form-inscripcion">
+      <div class="form-group">
+        <label for="recursoId">Recurso:</label>
+        <select id="recursoId" name="recursoId" required>
+          <option value="">Cargando recursos...</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="fechaInscripcion">Fecha asignada:</label>
+        <input type="date" id="fechaInscripcion" name="fechaInscripcion" required>
+      </div>
+
+      <div class="form-group">
+        <label for="bloqueId">Bloque:</label>
+        <select id="bloqueId" name="bloqueId" required>
+          <option value="">Cargando bloques...</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="uso">Uso:</label>
+        <input type="text" id="uso" name="uso" placeholder="Ej: Efi 101 paralelo 2" required>
+      </div>
+
+      <button type="submit" class="btn-submit">Registrar inscripción</button>
+    </form>
+  </div>
+
+  <script src="api.js"></script>
+  <script src="inscripcion-calendarizada.js"></script>
+</body>
+</html>

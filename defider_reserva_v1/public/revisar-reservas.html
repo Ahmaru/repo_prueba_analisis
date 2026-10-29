@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Revisar Reservas - DEFIDER</title>
+  <link rel="stylesheet" href="estilos.css">
+</head>
+<body>
+  <div class="container">
+    <div class="page-header">
+      <div>
+        <h1 id="tituloReservas">Mis reservas</h1>
+        <p class="subtitle">Consulta el estado de tus reservas y cancela las que ya no necesites.</p>
+      </div>
+      <div class="header-actions">
+        <span id="nombreUsuarioNav" class="user-name">Juan Pérez</span>
+        <span id="rolUsuarioNav" class="user-role">Consumidor</span>
+        <a href="hu01-disponibilidad.html" class="btn-back btn-secondary">Volver a disponibilidad</a>
+        <a href="index.html" onclick="cerrarSesion()" class="btn-back btn-secondary">Cerrar sesión</a>
+      </div>
+    </div>
+
+    <div class="table-responsive">
+      <table id="tabla-reservas">
+        <thead>
+          <tr>
+            <th>Recurso</th>
+            <th>Fecha</th>
+            <th>Bloque</th>
+            <th>Uso</th>
+            <th>Sede</th>
+            <th>Estado</th>
+            <th>Acciones</th>
+          </tr>
+        </thead>
+        <tbody id="tabla-body">
+          <!-- Se completa dinámicamente con JS -->
+        </tbody>
+      </table>
+    </div>
+
+    <div id="accionAdmin" class="text-center mt-4 d-none">
+      <a href="/inscripcion-calendarizada" class="btn-back">Añadir inscripción calendarizada</a>
+    </div>
+  </div>
+
+  <script src="api.js"></script>
+  <script src="revisar-reservas.js"></script>
+</body>
+</html>
