@@ -38,9 +38,15 @@ app.use((error, req, res, next) => {
     console.error(error);
   }
 
-  return res.status(status).json({
+  const respuesta = {
     mensaje: error.message || 'Ocurrió un error inesperado.'
-  });
+  };
+
+  if (error.detalles) {
+    respuesta.detalles = error.detalles;
+  }
+
+  return res.status(status).json(respuesta);
 });
 
 app.listen(port, () => {

@@ -222,10 +222,12 @@ async function cancelarReserva(usuario, reservaId) {
 
   const { rows: actualizadas } = await pool.query(
     `UPDATE reservas
-     SET estado = 'cancelada', cancelada_en = NOW()
+     SET estado = 'cancelada',
+         cancelada_en = NOW(),
+         motivo_cancelacion = $2
      WHERE id = $1
      RETURNING id, estado, TO_CHAR(fecha, 'YYYY-MM-DD') AS fecha, cancelada_en`,
-    [reservaId]
+    [reservaId, usuario.rol === 'administrador' ? 'Cancelada por el administrador' : 'Cancelada por el usuario']
   );
 
   return {

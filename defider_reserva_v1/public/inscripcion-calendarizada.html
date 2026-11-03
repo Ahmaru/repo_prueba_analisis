@@ -10,8 +10,8 @@
   <div class="container">
     <div class="page-header">
       <div>
-        <h1>Inscripción calendarizada especial</h1>
-        <p class="subtitle">Registra un bloque fijo para una actividad académica o extracurricular.</p>
+        <h1 id="tituloFormulario">Inscripción calendarizada especial</h1>
+        <p class="subtitle">Registra una actividad institucional y bloquea sus días, bloques y materiales durante el período indicado.</p>
       </div>
       <div class="header-actions">
         <span id="nombreUsuarioNav" class="user-name">Administrador DEFIDER</span>
@@ -31,23 +31,53 @@
       </div>
 
       <div class="form-group">
-        <label for="fechaInscripcion">Fecha asignada:</label>
-        <input type="date" id="fechaInscripcion" name="fechaInscripcion" required>
+        <label for="fechaInicio">Fecha de inicio:</label>
+        <input type="date" id="fechaInicio" name="fechaInicio" required>
       </div>
 
       <div class="form-group">
-        <label for="bloqueId">Bloque:</label>
-        <select id="bloqueId" name="bloqueId" required>
-          <option value="">Cargando bloques...</option>
-        </select>
+        <label for="fechaFin">Fecha de término:</label>
+        <input type="date" id="fechaFin" name="fechaFin" required>
       </div>
 
       <div class="form-group">
-        <label for="uso">Uso:</label>
+        <label>Días de la semana:</label>
+        <div id="diasSemana" class="opciones-checkbox">
+          <label><input type="checkbox" value="1"> Lunes</label>
+          <label><input type="checkbox" value="2"> Martes</label>
+          <label><input type="checkbox" value="3"> Miércoles</label>
+          <label><input type="checkbox" value="4"> Jueves</label>
+          <label><input type="checkbox" value="5"> Viernes</label>
+          <label><input type="checkbox" value="6"> Sábado</label>
+          <label><input type="checkbox" value="7"> Domingo</label>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>Bloques horarios:</label>
+        <div id="bloquesHorarios" class="opciones-checkbox">
+          <span class="text-muted">Cargando bloques...</span>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="cantidad">Cantidad por bloque:</label>
+        <input type="number" id="cantidad" name="cantidad" min="1" value="1" required>
+      </div>
+
+      <div class="form-group">
+        <label for="uso">Uso o actividad:</label>
         <input type="text" id="uso" name="uso" placeholder="Ej: Efi 101 paralelo 2" required>
       </div>
 
-      <button type="submit" class="btn-submit">Registrar inscripción</button>
+      <div class="form-group">
+        <label class="opcion-solapar">
+          <input type="checkbox" id="solapar" name="solapar">
+          Solapar reservas existentes y cancelarlas para priorizar esta actividad
+        </label>
+      </div>
+
+      <button type="submit" id="btnGuardar" class="btn-submit">Registrar inscripción</button>
     </form>
   </div>
 

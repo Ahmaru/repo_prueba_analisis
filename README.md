@@ -103,11 +103,19 @@ La autenticación es una simulación para el prototipo. El rol se obtiene del co
 | S-03 | Consultar detalle de un recurso | `GET /api/recursos/:id` | HU-01, HU-02 |
 | S-04 | Registrar reserva individual | `POST /api/reservas` | HU-02 |
 | S-05 | Registrar inscripción calendarizada | `POST /api/inscripciones-calendarizadas` | HU-10 |
-| S-06 | Listar reservas propias | `GET /api/reservas` | HU-04 |
-| S-07 | Cancelar una reserva propia | `PATCH /api/reservas/:id/cancelar` | HU-04 |
+| S-06 | Listar reservas | `GET /api/reservas` | HU-04, HU-10 |
+| S-07 | Cancelar una reserva | `PUT /api/reservas/:id/cancelar` | HU-04 |
 | S-08 | Consultar catálogo de recursos y bloques | `GET /api/catalogo` | HU-10 |
+| S-09 | Listar inscripciones calendarizadas | `GET /api/inscripciones-calendarizadas` | HU-10 |
+| S-10 | Consultar una inscripción calendarizada | `GET /api/inscripciones-calendarizadas/:id` | HU-10 |
+| S-11 | Modificar una inscripción calendarizada | `PUT /api/inscripciones-calendarizadas/:id` | HU-10 |
+| S-12 | Eliminar una inscripción calendarizada | `DELETE /api/inscripciones-calendarizadas/:id` | HU-10 |
+
+Las inscripciones calendarizadas aceptan un rango de fechas, días de la semana y uno o más bloques. Si la actividad se topa con reservas existentes, `POST` y `PUT` responden `409` con el detalle de los conflictos; el campo `solapar: true` cancela esas reservas y prioriza la actividad institucional. Al eliminar una inscripción con `DELETE`, se liberan sus bloques y materiales.
 
 Los servicios protegidos reciben el header `X-Usuario-Id` con el identificador del usuario demo. El frontend lo agrega automáticamente después del login.
+
+> Si ya existía un volumen de PostgreSQL de una entrega anterior, ejecutar `docker compose down -v` antes de levantar para aplicar el nuevo esquema de inscripciones calendarizadas.
 
 ## Flujo de prueba
 
@@ -117,6 +125,8 @@ Los servicios protegidos reciben el header `X-Usuario-Id` con el identificador d
 4. Ir a “Mis reservas” desde la barra superior.
 5. Cancelar una reserva confirmada y verificar que el bloque vuelve a aparecer disponible.
 6. Ingresar con `admin@usm.cl` y tipo “Administrador” para registrar una inscripción calendarizada.
+7. En “Reservas registradas”, revisar la sección “Inscripciones calendarizadas”, editar una inscripción y luego eliminarla para comprobar que sus bloques vuelven a estar disponibles.
+8. Al registrar o modificar una actividad que se topa con reservas, comprobar el aviso de conflictos y la opción de solapar.
 
 **Comandos utiles docker**  
 Levantar el proyecto sin volver a construir las imágenes:

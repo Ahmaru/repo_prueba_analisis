@@ -161,6 +161,22 @@ tbody tr:hover {
   background: #b91c1c;
 }
 
+.btn-editar {
+  background: #2563eb;
+  color: #ffffff;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 0.82rem;
+  margin-right: 6px;
+}
+
+.btn-editar:hover {
+  background: #1d4ed8;
+}
+
 .badge {
   display: inline-block;
   padding: 4px 10px;
@@ -219,6 +235,40 @@ tbody tr:hover {
   background-color: var(--accent-hover);
 }
 
+.opciones-checkbox {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 8px;
+  padding: 10px;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  background: #ffffff;
+}
+
+.opciones-checkbox label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 0;
+  font-weight: 500;
+  font-size: 0.9rem;
+}
+
+.opciones-checkbox input[type="checkbox"],
+.opcion-solapar input[type="checkbox"] {
+  width: auto;
+  margin: 0;
+}
+
+.opcion-solapar {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 600;
+  font-size: 0.9rem;
+  cursor: pointer;
+}
+
 .alerta-error {
   background: #fee2e2;
   color: #991b1b;
@@ -234,4 +284,7 @@ tbody tr:hover {
 .text-muted { color: var(--text-muted); }
 .text-danger { color: #dc2626; }
 .py-4 { padding-top: 1.5rem; padding-bottom: 1.5rem; }
+.mt-1 { margin-top: 0.5rem; }
+.mt-2 { margin-top: 0.75rem; }
 .mt-4 { margin-top: 1.5rem; }
+.alerta-error ul { margin-left: 18px; }

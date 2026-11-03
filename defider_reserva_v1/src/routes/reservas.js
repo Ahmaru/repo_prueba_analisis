@@ -36,7 +36,7 @@ router.post('/', asyncHandler(async (req, res) => {
   return res.status(201).json(reserva);
 }));
 
-router.patch('/:id/cancelar', asyncHandler(async (req, res) => {
+router.put('/:id/cancelar', asyncHandler(async (req, res) => {
   const reserva = await cancelarReserva(req.usuario, req.params.id);
   return res.json(reserva);
 }));

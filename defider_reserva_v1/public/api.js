@@ -52,7 +52,9 @@ async function apiFetch(ruta, opciones = {}) {
 
   if (!respuesta.ok) {
     const mensaje = datos && datos.mensaje ? datos.mensaje : 'No se pudo completar la operación.';
-    throw new Error(mensaje);
+    const error = new Error(mensaje);
+    error.detalles = datos && datos.detalles ? datos.detalles : null;
+    throw error;
   }
 
   return datos;
